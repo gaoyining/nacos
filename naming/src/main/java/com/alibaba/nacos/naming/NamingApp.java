@@ -25,7 +25,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author xxc
  */
 @EnableScheduling
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.alibaba.nacos.core")
 public class NamingApp {
 
     public static void main(String[] args) {

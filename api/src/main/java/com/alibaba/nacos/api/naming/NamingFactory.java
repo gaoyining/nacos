@@ -31,6 +31,7 @@ public class NamingFactory {
         try {
             Class<?> driverImplClass = Class.forName("com.alibaba.nacos.client.naming.NacosNamingService");
             Constructor constructor = driverImplClass.getConstructor(String.class);
+            // 反射出一个NamingService的实例
             NamingService vendorImpl = (NamingService)constructor.newInstance(serverList);
             return vendorImpl;
         } catch (Throwable e) {

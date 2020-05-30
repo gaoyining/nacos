@@ -78,6 +78,7 @@ public class NacosNamingService implements NamingService {
         Properties properties = new Properties();
         properties.setProperty(PropertyKeyConst.SERVER_ADDR, serverList);
 
+        // 初始化
         init(properties);
     }
 
@@ -86,14 +87,17 @@ public class NacosNamingService implements NamingService {
     }
 
     private void init(Properties properties) {
+        // 初始化namespace
         namespace = InitUtils.initNamespaceForNaming(properties);
         initServerAddr(properties);
         InitUtils.initWebRootContext();
         initCacheDir();
         initLogName(properties);
 
+        // 启动EventDispatcher
         eventDispatcher = new EventDispatcher();
         serverProxy = new NamingProxy(namespace, endpoint, serverList, properties);
+        // 所有客户端注册上来时，发送http请求，告诉客户端这个服务的状态
         beatReactor = new BeatReactor(serverProxy, initClientBeatThreadCount(properties));
         hostReactor = new HostReactor(eventDispatcher, serverProxy, cacheDir, isLoadCacheAtStart(properties),
             initPollingThreadCount(properties));

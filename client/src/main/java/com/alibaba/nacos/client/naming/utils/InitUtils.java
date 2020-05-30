@@ -34,6 +34,8 @@ public class InitUtils {
      * Add a difference to the name naming. This method simply initializes the namespace for Naming.
      * Config initialization is not the same, so it cannot be reused directly.
      *
+     *在名称命名上添加一个区别。此方法只是初始化命名空间以进行命名。
+     *配置初始化不一样，因此不能直接重用。     *
      * @param properties
      * @return
      */

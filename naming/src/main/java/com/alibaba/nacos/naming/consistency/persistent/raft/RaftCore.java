@@ -141,7 +141,10 @@ public class RaftCore {
 
         Loggers.RAFT.info("finish to load data from disk, cost: {} ms.", (System.currentTimeMillis() - start));
 
+        // MasterElection 就是follower长时间没收到心跳就选举的定时任务
         GlobalExecutor.registerMasterElection(new MasterElection());
+
+        // HeartBeat 就是leader的心跳定时任务
         GlobalExecutor.registerHeartbeat(new HeartBeat());
 
         Loggers.RAFT.info("timer started: leader timeout ms: {}, heart-beat timeout ms: {}",

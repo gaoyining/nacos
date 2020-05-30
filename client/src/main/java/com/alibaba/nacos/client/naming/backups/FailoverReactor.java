@@ -45,6 +45,7 @@ public class FailoverReactor {
     public FailoverReactor(HostReactor hostReactor, String cacheDir) {
         this.hostReactor = hostReactor;
         this.failoverDir = cacheDir + "/failover";
+        // 初始化容灾组件
         this.init();
     }
 

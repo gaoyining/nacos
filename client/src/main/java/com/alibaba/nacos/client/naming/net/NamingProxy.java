@@ -131,6 +131,10 @@ public class NamingProxy {
         securityProxy.login(getServerList());
     }
 
+    /**
+     * 通过一个http请求，去Nacos server获取一串Nacos server集群的地址列表
+     * @return
+     */
     public List<String> getServerListFromEndpoint() {
 
         try {

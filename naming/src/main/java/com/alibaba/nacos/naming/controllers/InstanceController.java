@@ -306,6 +306,7 @@ public class InstanceController {
             instance.setInstanceId(instance.getInstanceId());
             instance.setEphemeral(clientBeat.isEphemeral());
 
+            // 实例为空，就注册
             serviceManager.registerInstance(namespaceId, serviceName, instance);
         }
 
